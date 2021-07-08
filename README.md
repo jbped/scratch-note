@@ -11,6 +11,7 @@
 * [License](#license)
 * [Credits](#credits)
 * [Contributions](#contributions)
+* [Questions](#questions)
 
 ## Installation
 No installation necessary, simply go to the [website](https://scratch-note.herokuapp.com/).
