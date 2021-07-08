@@ -1,14 +1,15 @@
 const router = require("express").Router();
 const db = require("../../db/db.json");
-const { createNote, deleteNote } = require("../../lib/notes")
+const { createNote, deleteNote, getNotes } = require("../../lib/notes");
+
 
 router.get("/notes", (req,res) => {
-    let notes = db
+    let notes = getNotes();
+    console.log(notes)
     res.json(notes);
 });
 
 router.post("/notes", ({ body }, res) => {
-    // add validation requirement for body.title and body.text
     body.id = db.length.toString();
     const note = createNote(body, db);
     res.json(note);
@@ -16,7 +17,9 @@ router.post("/notes", ({ body }, res) => {
 
 router.delete("/notes/:id", (req, res) => {
     let id = req.params.id
-    deleteNote(id, db);
-})
+    
+    let noteArr = deleteNote(id);
+    res.json(noteArr);
+});
 
 module.exports = router;
